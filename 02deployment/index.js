@@ -25,4 +25,5 @@ app.get('/login', (req, res) =>{
 
 app.listen(process.env.PORT, () => {
   console.log(`Example app listening on port ${port}`);
+  // since we are use env for port variable we should use the same port number written in variable file
 });
