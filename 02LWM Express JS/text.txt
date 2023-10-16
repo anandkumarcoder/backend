@@ -1,0 +1,18 @@
+what is express js ? it's a package on node
+
+template engine(ejs) - html with calculating power
+setting up steps of ejs
+1. install ejs 
+npm i ejs
+
+2 configure ejs
+app.set("view engine", "ejs")
+
+3. ek views name folder banao 
+
+4.make ejs file inside it
+
+5) send ki jagah render karo 
+
+What is template of ejs - other types like ejs are pug js
+
