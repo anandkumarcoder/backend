@@ -1,11 +1,20 @@
 // dynamic route - only a certain part of the url change so to create multiple dynamic (only the changing part)
 
 
-// ejs also in this file 
+
 const express = require('express')
 const app = express()
 
+// configure the express static
+app.use(express.static("./public"))
+
+
+
+// ejs also in this file 
 app.set("view engine", "ejs")
+
+
+
 
 app.get('/', function (req, res) {
   //res.send('Hello World') // code for dynamic
@@ -23,8 +32,25 @@ app.get('/contact', function (req, res) {
 
 })
 
+// error handling 
 
-app.get('/profile/:username', function (req, res) {
+app.get('/error', function (req, res) {
+
+throw Error ("something went wrong")
+})
+
+
+app.get('/profile/:username', function (req, res, next) {
     res.send(`Hello profile ${req.params.username}`)
   })
+
+app.use(function errorHandler (err, req, res, next) {
+  if (res.headersSent) {
+    return next(err)
+  }
+  res.status(500)
+  res.render('error', { error: err })
+})
+
+
 app.listen(3000)
