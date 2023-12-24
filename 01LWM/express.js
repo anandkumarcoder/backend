@@ -8,22 +8,30 @@
 const express = require('express')
 const app = express() // app can do whatever express can do
 
-app.use((req,res,next) => {
-console.log("hi i am middleware");
-next();// this pushs to next code bcause it gets jammed from
-})
-
-app.use((req,res,next) => {
-    console.log("hi i am middleware 2");
-    next();// this pushs to next code bcause it gets jammed from
-    })
-    
 
 
 // middleware - runs before route runs. This done to do some work before starting route
+app.use((req,res,next) => {
+console.log("hi i am middleware");
+next();// this pushes to next code because it gets jammed from
+})
 
+/* app.use((req,res,next) => {
+    console.log("hi i am middleware 2");
+    next();// this pushs to next code bcause it gets jammed from
+    }) */
+    
+
+
+
+// this is route
 app.get('/', function (req, res) {
   res.send('Hello  new World')
+})
+
+
+app.get('/profile', function (req, res) {
+  res.send('Hello  profile')
 })
 
 app.listen(3000)
