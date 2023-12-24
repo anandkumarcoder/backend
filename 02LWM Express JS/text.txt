@@ -24,7 +24,7 @@ How to set up static files -
 
 2) create three folders inside it - javascripts , images and stylesheets
 
-3) configure the express static in script.js file
+3) configure the express static in script.js file -> app.use(express.static("./public"))
 
 4) understand the path
 //--------

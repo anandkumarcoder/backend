@@ -6,16 +6,16 @@ const express = require('express')
 const app = express()
 
 // configure the express static
-app.use(express.static("./public"))
+ app.use(express.static("./public"))
 
 
 
-// ejs also in this file 
-app.set("view engine", "ejs")
+// configuring ejs ejs also in this file 
+ app.set("view engine", "ejs")
 
 
 
-
+// rendering data from ejs file (inside views folder)
 app.get('/', function (req, res) {
   //res.send('Hello World') // code for dynamic
 
@@ -23,6 +23,9 @@ app.get('/', function (req, res) {
 
 
 })
+
+
+// rendering contact page
 
 app.get('/contact', function (req, res) {
   //res.send('Hello World') // code for dynamic
@@ -34,12 +37,12 @@ app.get('/contact', function (req, res) {
 
 // error handling 
 
-app.get('/error', function (req, res) {
+app.get('/error', function (req, res, next) {
 
 throw Error ("something went wrong")
 })
 
-
+// dynamic routing - use ":", to acces use ->req.params.username
 app.get('/profile/:username', function (req, res, next) {
     res.send(`Hello profile ${req.params.username}`)
   })
